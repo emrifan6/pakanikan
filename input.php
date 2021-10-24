@@ -10,6 +10,23 @@ $date = date("Y-m-d");
 //echo " Date:".$d."<BR>";
 $time = date("H:i");
 
+$js_odns = '
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        var settings = {
+          "url": "https://updates.opendns.com/nic/update?hostname=gasem",
+          "method": "GET",
+          "timeout": 0,
+          "headers": {
+          "Access-Control-Allow-Origin":  "*",
+            "Authorization": "Basic Qm94YmlnNDlAZ21haWwuY29tOkdzbV93dWx1bmcxMjM="
+          },
+        };
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+    </script>
+';
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $api_key = test_input($_GET["api_key"]);
@@ -17,8 +34,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         
         $pakan_ikan = test_input($_GET["pakan_ikan"]);
         $cek_pakan = test_input($_GET["cek_pakan"]);
+<<<<<<< HEAD
         $dht11 = $_GET["dht11"];
         $ds18b = $_GET["ds18b"];
+=======
+        $dht11 = test_input($_GET["dht11"]);
+        $ds18b = test_input($_GET["ds18b"]);
+>>>>>>> 2a01a496bf5858af0c8f28e0c1d436d547125900
         $ip = $_SERVER['REMOTE_ADDR'];
         
        if ($conn->connect_error) {
@@ -37,7 +59,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $conn->close();
       } else {
           // echo $test_text;
+<<<<<<< HEAD
           echo "Wrong API_KEY";
+=======
+          echo "Wrong API";
+>>>>>>> 2a01a496bf5858af0c8f28e0c1d436d547125900
       }
     } else {
       echo "No data";
@@ -50,3 +76,4 @@ function test_input($data)
     $data = htmlspecialchars($data);
     return $data;
 }
+
